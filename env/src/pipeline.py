@@ -1,7 +1,7 @@
 '''
-                                                            Pipeline
+                                                        Pipeline
 
-    This is the pipeline script, the one that will get the data from the CSV dataset, transform it and load it in to the MySQL database.
+    This is the pipeline script, it will get the data from the CSV dataset, transform it and load it in to the MySQL database.
 
     Author: Zourethe
     Date: January, 29, 2024
@@ -22,7 +22,7 @@ def dataExtractor(datasetPath):
 
 # Data transformer function definition.
 def dataTransformer(dataframe):
-    # Array of unnecessary columns.
+    # List of unnecessary columns.
     unnecessary_columns = ['job_category', 'company_size', 'employee_residence', 'salary_currency', 'salary']
 
     # Removing the unnecessary columns.
@@ -49,10 +49,10 @@ def dataLoader(transformedDataframe):
             pass
 
         # Removing the unnecessary 'work_year' column and compiling the dataframe in to a .csv file.
-        year_transformedDataframe.drop(columns = 'work_year', axis = 1, inplace = True)
+        year_transformedDataframe.drop(columns = 'work_year', axis = 1)
         year_transformedDataframe.to_csv(filename, index=False)
+        print('Created {}'.format(filename))
 
 # Testing.
 if True:
     dataLoader(dataTransformer(dataExtractor('../avg-salary-for-data-science-jobs/env/src/dataset/jobs_list.csv')))
-    
