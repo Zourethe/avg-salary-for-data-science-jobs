@@ -8,9 +8,27 @@
 '''
 
 # Libraries imports.
+import mysql.connector
 import pandas as pd
 import os
 import time
+
+mydb = msql.connector.connect(
+        host = "localhost"
+        user = "zou"
+        password = "zou"
+    )
+
+mycursor = mydb.cursor()
+mycursos.execute("CREATE DATABASE mydatabase")
+
+
+
+
+
+
+
+
 
 # Data extractor function definition.
 def dataExtractor(datasetPath):
